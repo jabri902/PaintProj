@@ -1,4 +1,4 @@
-﻿Public Class MyRect
+﻿Public Class Arc
     Public Property Pen As Pen
     Dim m_image As Image
     Dim m_a As Point
@@ -14,8 +14,8 @@
     End Sub
     Public Sub Draw()
         Using g As Graphics = Graphics.FromImage(m_image)
-            'g.DrawRectangle(Pen, m_a.X, m_a.Y, w, h)
-            g.DrawRectangle(Pen, m_a.X, m_a.Y, 100, 100)
+            g.DrawArc(Pen, m_a.X, m_a.Y, 100, 100, 0, 90)
+
         End Using
 
     End Sub
