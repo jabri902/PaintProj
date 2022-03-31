@@ -100,6 +100,9 @@
     </Compile>
     <Compile Include="MyCircle.vb" />
     <Compile Include="MyRect.vb" />
+    <Compile Include="NGon.vb" />
+    <Compile Include="Pb.vb" />
+    <Compile Include="poly.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -123,6 +126,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fruit-Salad-5.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

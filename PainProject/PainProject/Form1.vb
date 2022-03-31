@@ -30,6 +30,25 @@
                 d = New Arc(PictureBox1.Image, m_Previous, e.Location)
                 d.Pen = New Pen(c, w)
             End If
+            If type = "Pentagon" Then
+                d = New pentagon(PictureBox1.Image, m_Previous, e.Location)
+                d.Pen = New Pen(c, w)
+            End If
+
+            If type = "NGon" Then
+
+                d = New NGon(PictureBox1.Image, m_Previous, e.Location)
+                d.Pen = New Pen(c, w)
+                d.sides = TrackBar4.Value
+                d.radius = TrackBar5.Value
+            End If
+            If type = "Picture" Then
+                d.w = TrackBar1.Value
+                d.h = TrackBar2.Value
+                d = New Pb(PictureBox1.Image, m_Previous, e.Location)
+                d.picture = PictureBox2.Image
+
+            End If
             m_shapes.Add(d)
             PictureBox1.Invalidate()
             m_Previous = e.Location
@@ -118,6 +137,7 @@
         type = "Rectangle"
     End Sub
 
+
     Private Sub Button17_Click(sender As Object, e As EventArgs) Handles Button17.Click
         type = "Line"
     End Sub
@@ -128,5 +148,25 @@
 
     Private Sub Button16_Click(sender As Object, e As EventArgs) Handles Button16.Click
         type = "Arc"
+    End Sub
+
+    Private Sub Button18_Click(sender As Object, e As EventArgs) Handles Button18.Click
+        type = "Pentagon"
+    End Sub
+
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+        SaveFileDialog1.ShowDialog()
+    End Sub
+
+    Private Sub SaveFileDialog1_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles SaveFileDialog1.FileOk
+        PictureBox1.Image.Save(SaveFileDialog1.FileName)
+    End Sub
+
+    Private Sub Button19_Click(sender As Object, e As EventArgs) Handles Button19.Click
+        type = "NGon"
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        type = "Picture"
     End Sub
 End Class
