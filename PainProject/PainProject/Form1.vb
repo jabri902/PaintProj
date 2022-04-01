@@ -4,7 +4,10 @@
     Dim c As Color
     Dim w As Integer
     Dim type As String
-
+    Public Property xspeed As Integer
+    Public Property yspeed As Integer
+    Dim xoffset As Integer
+    Dim yoffset As Integer
     Private Sub pictureBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDown
         m_Previous = e.Location
         pictureBox1_MouseMove(sender, e)
@@ -13,10 +16,14 @@
     Private Sub pictureBox1_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseMove
         If m_Previous IsNot Nothing Then
             Dim d As Object
+            d = New Line(PictureBox1.Image, m_Previous, e.Location)
+            d.Pen = New Pen(c, w)
+            d.xspeed = TrackBar6.Value
 
             If type = "Line" Then
                 d = New Line(PictureBox1.Image, m_Previous, e.Location)
                 d.Pen = New Pen(c, w)
+                d.xspeed = TrackBar6.Value
             End If
             If type = "Rectangle" Then
                 d = New MyRect(PictureBox1.Image, m_Previous, e.Location)
@@ -43,10 +50,10 @@
                 d.radius = TrackBar5.Value
             End If
             If type = "Picture" Then
-                d.w = TrackBar1.Value
-                d.h = TrackBar2.Value
                 d = New Pb(PictureBox1.Image, m_Previous, e.Location)
                 d.picture = PictureBox2.Image
+                d.w = TrackBar3.Value
+                d.h = TrackBar2.Value
 
             End If
             m_shapes.Add(d)
@@ -73,6 +80,10 @@
         For Each s As Object In m_shapes
             s.Draw()
         Next
+        If (CheckBox1.Checked) Then
+
+            Refresh()
+        End If
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         c = sender.backcolor
@@ -168,5 +179,9 @@
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
         type = "Picture"
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+
     End Sub
 End Class
