@@ -1,5 +1,9 @@
 ﻿Public Class MyRect
     Public Property Pen As Pen
+    Public Property fill As Boolean
+    Public Property color1 As Color
+    Public Property color2 As Color
+
     Dim m_image As Image
     Dim m_a As Point
     Dim m_b As Point
@@ -14,8 +18,20 @@
     End Sub
     Public Sub Draw()
         Using g As Graphics = Graphics.FromImage(m_image)
-            'g.DrawRectangle(Pen, m_a.X, m_a.Y, w, h)
-            g.DrawRectangle(Pen, m_a.X, m_a.Y, 100, 100)
+            If fill Then
+                Dim lingrbrush As Drawing.Drawing2D.LinearGradientBrush
+                lingrbrush = New Drawing.Drawing2D.LinearGradientBrush(
+                    New Point(0, 10),
+                      New Point(100, 10),
+                color1,
+                color2)
+
+                g.FillRectangle(lingrbrush, m_a.X, m_a.Y, 100, 100)
+
+            Else
+
+                g.DrawRectangle(Pen, m_a.X, m_a.Y, 100, 100)
+            End If
         End Using
 
     End Sub

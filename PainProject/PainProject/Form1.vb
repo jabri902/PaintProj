@@ -27,6 +27,9 @@
             End If
             If type = "Rectangle" Then
                 d = New MyRect(PictureBox1.Image, m_Previous, e.Location)
+                d.fill = CheckBox2.Checked
+                d.color1 = Button2.BackColor
+                d.color2 = Button3.BackColor
                 d.Pen = New Pen(c, w)
             End If
             If type = "Pie" Then
@@ -86,11 +89,19 @@
         End If
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        c = sender.backcolor
+
+        ColorDialog1.ShowDialog()
+        c = ColorDialog1.Color
+        Button1.BackColor = c
+
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        c = sender.backcolor
+
+        ColorDialog1.ShowDialog()
+        c = ColorDialog1.Color
+        sender.BackColor = c
+
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
@@ -110,7 +121,10 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        c = sender.backcolor
+
+        ColorDialog1.ShowDialog()
+        c = ColorDialog1.Color
+        sender.BackColor = c
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
