@@ -13,12 +13,17 @@
         m_a = a
         m_b = b
     End Sub
+
     Public Sub Draw()
+
+
+
+
         Using g As Graphics = Graphics.FromImage(m_image)
-            xoffset += xspeed
-            yoffset += yspeed
-            g.DrawLine(Pen, m_a.X + xoffset, m_a.Y + yoffset, m_b.X + xoffset, m_b.Y + yoffset)
-        End Using
+                xoffset += xspeed
+                yoffset += yspeed
+                g.DrawLine(Pen, m_a.X + xoffset, m_a.Y + yoffset, m_b.X + xoffset, m_b.Y + yoffset)
+            End Using
 
     End Sub
 End Class

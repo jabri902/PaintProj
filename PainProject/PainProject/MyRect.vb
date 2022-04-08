@@ -15,6 +15,7 @@
         m_image = i
         m_a = a
         m_b = b
+
     End Sub
     Public Sub Draw()
         Using g As Graphics = Graphics.FromImage(m_image)

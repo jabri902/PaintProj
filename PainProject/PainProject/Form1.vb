@@ -28,8 +28,8 @@
             If type = "Rectangle" Then
                 d = New MyRect(PictureBox1.Image, m_Previous, e.Location)
                 d.fill = CheckBox2.Checked
-                d.color1 = Button2.BackColor
-                d.color2 = Button3.BackColor
+                d.color1 = Button20.BackColor
+                d.color2 = Button21.BackColor
                 d.Pen = New Pen(c, w)
             End If
             If type = "Pie" Then
@@ -59,6 +59,7 @@
                 d.h = TrackBar2.Value
 
             End If
+
             m_shapes.Add(d)
             PictureBox1.Invalidate()
             m_Previous = e.Location
@@ -197,5 +198,17 @@
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
 
+    End Sub
+
+    Private Sub Button20_Click(sender As Object, e As EventArgs) Handles Button20.Click
+        ColorDialog1.ShowDialog()
+        c = ColorDialog1.Color
+        Button20.BackColor = c
+    End Sub
+
+    Private Sub Button21_Click(sender As Object, e As EventArgs) Handles Button21.Click
+        ColorDialog1.ShowDialog()
+        c = ColorDialog1.Color
+        Button21.BackColor = c
     End Sub
 End Class
